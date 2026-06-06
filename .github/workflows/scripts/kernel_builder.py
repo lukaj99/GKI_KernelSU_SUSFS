@@ -95,6 +95,22 @@ CONFIG_KSU_SUSFS_ENABLE_LOG=y
 CONFIG_KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS=y
 CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG=y
 CONFIG_KSU_SUSFS_OPEN_REDIRECT=y
+
+# === Power-user extras (low-risk, KMI-safe, additive/off-by-default) ===
+# Networking: CAKE qdisc (bufferbloat) + IP_SET (O(1) firewall matching)
+CONFIG_NET_SCH_CAKE=y
+CONFIG_IP_SET=y
+CONFIG_IP_SET_HASH_IP=y
+CONFIG_IP_SET_HASH_NET=y
+CONFIG_IP_SET_LIST_SET=y
+# Storage: NTFS3 read-write (USB-OTG NTFS drives); Windows-compatible 32-bit clusters
+CONFIG_NTFS3_FS=y
+# CONFIG_NTFS3_64BIT_CLUSTER is not set
+# Memory: DAMON infra compiled-in but OFF by default (safe; activate at runtime to experiment)
+CONFIG_DAMON=y
+CONFIG_DAMON_PADDR=y
+CONFIG_DAMON_RECLAIM=y
+CONFIG_DAMON_LRU_SORT=y
 """
 
     ZRAM_CONFIG_5_10 = "CONFIG_ZSMALLOC=y\nCONFIG_ZRAM=y\nCONFIG_MODULE_SIG=n\nCONFIG_CRYPTO_LZO=y\nCONFIG_ZRAM_DEF_COMP_LZ4KD=y\n"
