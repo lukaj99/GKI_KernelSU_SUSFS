@@ -152,7 +152,9 @@ class BuildConfig:
 
     @property
     def formatted_branch(self) -> str:
-        return f"{self.android_version}-{self.kernel_version}-{self.os_patch_level}"
+        # Use rolling GKI branch (tracks HEAD) so we build the latest sublevel
+        # (android15-6.6 HEAD = 6.6.138); monthly snapshots lag (2026-04 = 6.6.127).
+        return f"{self.android_version}-{self.kernel_version}"
 
     @property
     def kernel_branch(self) -> str:
